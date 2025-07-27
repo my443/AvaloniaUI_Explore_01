@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrossPlatformAvalonia_01
+namespace CrossPlatformAvalonia_01.Models
 {
     public class Person
     {

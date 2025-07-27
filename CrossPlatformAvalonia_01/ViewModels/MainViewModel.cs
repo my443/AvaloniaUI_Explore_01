@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using CrossPlatformAvalonia_01.Data;
+using CrossPlatformAvalonia_01.Models;
 
 namespace CrossPlatformAvalonia_01.ViewModels;
 
