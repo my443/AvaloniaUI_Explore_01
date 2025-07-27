@@ -7,24 +7,12 @@ using CrossPlatformAvalonia_01.Data;
 
 namespace CrossPlatformAvalonia_01.ViewModels;
 
-public partial class MainViewModel : ViewModelBase, INotifyPropertyChanged
+public partial class MainViewModel : ViewModelBase
 {
     public ObservableCollection<Person> Items { get; } = new ObservableCollection<Person>(new AppDbContext().People);
 
-    Person? _selectedItem;
-
-    public Person? SelectedItem
-    {
-        get => _selectedItem;
-        set
-        {
-            if (_selectedItem != value)
-            {
-                _selectedItem = value;
-                OnPropertyChanged(nameof(SelectedItem));
-            }
-        }
-    }
+    [ObservableProperty]
+    private Person? selectedItem;
 
     [ObservableProperty]
     private string _greeting = "Welcome to Avalonia!";
