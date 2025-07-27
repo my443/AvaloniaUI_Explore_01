@@ -16,7 +16,7 @@
     <!-- Left ListBox -->
     <ListBox x:Name="ItemsListBox"
              Grid.Column="0"
-             ItemsSource="{Binding Items}"
+             ItemsSource="{Binding People}"
              SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
              Margin="0"
              />
@@ -39,21 +39,29 @@
             CornerRadius="4">
       <Grid >
         <Grid.RowDefinitions>
-          <RowDefinition Height="*" MinHeight="100"/>
+          <RowDefinition Height="*" MinHeight="200"/>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="*" MinHeight="100"/>
         </Grid.RowDefinitions>
         <!-- First Row Content -->
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
-          <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center"/>
-          <TextBlock Text="{Binding SelectedItem.Name}" FontWeight="Bold" HorizontalAlignment="Center"/>
-        </StackPanel>
+        <Border BorderBrush="Red" BorderThickness="2">
+
+          <DataGrid ItemsSource="{Binding Conversations}" IsReadOnly="true" CanUserResizeColumns="true" AutoGenerateColumns="False" Margin="0,10,0,0" Background="LightYellow">
+            <DataGrid.Columns>
+              <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+              <DataGridTextColumn Header="Created At" Binding="{Binding CreatedAt}" Width="*" />
+              <DataGridTextColumn Header="Details" Binding="{Binding Details}" Width="2*"/>
+            </DataGrid.Columns>
+          </DataGrid>        
+        </Border>
 
         <!-- GridSplitter: allows resizing between rows -->
         <GridSplitter Grid.Row="1" Height="5" Background="Gray" ResizeDirection="Rows" ShowsPreview="True"/>
 
         <!-- Second Row Content -->
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+          <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center"/>
+          <TextBlock Text="{Binding SelectedItem.Name}" FontWeight="Bold" HorizontalAlignment="Center"/>
           <TextBlock Text="{Binding Counter}" FontWeight="Bold" HorizontalAlignment="Center"/>
           <Button Content="Increment Counter" Command="{Binding IncrementCounterCommand}" HorizontalAlignment="Center"/>
         </StackPanel>

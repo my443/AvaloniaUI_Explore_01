@@ -10,7 +10,8 @@ namespace CrossPlatformAvalonia_01.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
-    public ObservableCollection<Person> Items { get; } = new ObservableCollection<Person>(new AppDbContext().People);
+    public ObservableCollection<Person> People { get; } = new ObservableCollection<Person>(new AppDbContext().People);
+    public ObservableCollection<Conversation> Conversations { get; } = new ObservableCollection<Conversation>(new AppDbContext().Conversations);
 
     [ObservableProperty]
     private Person? selectedItem;

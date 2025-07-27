@@ -16,6 +16,14 @@ namespace CrossPlatformAvalonia_01.Data
             new Person { Id = 3, PersonId = "P003", FirstName = "Alice", LastName = "Johnson" }
         };
         public IEnumerable<Person> People => people;
+
+        Conversation[] conversations = new Conversation[]
+        {
+            new Conversation { Id = 1, Title = "First Conversation", Details =  "Hello How are you?" , PersonId = 1, CreatedAt = DateTime.Now },
+            new Conversation { Id = 2, Title = "Second Conversation", Details = "Hi What's up?" , PersonId = 1, CreatedAt = DateTime.Now },
+            new Conversation { Id = 3, Title = "Third Conversation", Details = "Greetings Good day!" , PersonId = 2, CreatedAt = DateTime.Now }
+        };
+        public IEnumerable<Conversation> Conversations => conversations;
     }
 
 
