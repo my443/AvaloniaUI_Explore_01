@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CrossPlatformAvalonia_01.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CrossPlatformAvalonia_01.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  <Grid ColumnDefinitions="200,5,*">
+    <!-- Left ListBox -->
+    <ListBox x:Name="ItemsListBox"
+             Grid.Column="0"
+             ItemsSource="{Binding Items}"
+             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+             Margin="0"
+             />
+
+    <!-- Resizable Border -->
+    <GridSplitter Grid.Column="1"
+                  Width="5"
+                  Background="Gray"
+                  ShowsPreview="True"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  />
+
+    <!-- Right Panel for Selected Data -->
+    <Border Grid.Column="2"
+            Margin="10"
+            Background="#F0F0F0"
+            CornerRadius="4">
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding SelectedItem.Name}" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding Counter}" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <Button Content="Increment Counter" Command="{Binding IncrementCounterCommand}" HorizontalAlignment="Center"/>
+      </StackPanel>
+    </Border>
+  </Grid>
+
+</UserControl>
